@@ -91,3 +91,13 @@ The following dataset is the only dataset you need to be able to serve on the AP
 }
 ]
 }`
+
+
+## Instructions.
+1. Clone repository, then build the docker setup with "docker compose build". Make sure you have docker in your machine.
+2. After building setup env folder and mysql details can be seen in the docker compose file
+3. Run "docker compose up" to get the environment running, then make sure to create a database with the name of db in the .env
+4. Migrate the database with "docker compose run --rm php php artisan migrate"
+5. Run the product table seeder "docker compose run --rm php php artisan db:seed --class=ProductSeeder"
+6. Go to post man or your favorite REST clients and visit "http://localhost:90/api/products"
+7. The test suite can be ran with " docker compose run --rm php vendor/bin/phpunit --testdox"
