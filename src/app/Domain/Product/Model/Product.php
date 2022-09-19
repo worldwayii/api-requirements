@@ -22,10 +22,10 @@ class Product extends Model
         $result = 0;
 
         if($product->category =='insurance'){
-            $result = self::getThirtyPercent($product->price);
+            $result = $product->price - self::getThirtyPercent($product->price);
         }
         if($product->sku == '000003'){
-            $result = self::getFifteenPercent($product->price);
+            $result =  $product->price - self::getFifteenPercent($product->price);
         }
 
         return $result;
