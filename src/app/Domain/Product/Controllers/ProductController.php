@@ -5,7 +5,6 @@ namespace App\Domain\Product\Controllers;
 use App\Domain\Product\Model\Product;
 use App\Domain\Product\Resource\ProductResource;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
