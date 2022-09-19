@@ -14,21 +14,12 @@ class ProductResource extends  JsonResource
             'category' => $this->category,
             'price' => [
                 'original' =>  $this->price,
-                'final' => $this->getDiscount() ? : $this->price,
-                'discount_percentage' => $this->getPercentage(),
+                'final' => Product::getDiscount($this->id) ? : $this->price,
+                'discount_percentage' => Product::getPercentage($this->id),
                 'currency' => 'EUR',
             ]
 
         ];
     }
 
-    private function getDiscount()
-    {
-        return Product::getDiscount($this->id);
-    }
-
-    private function getPercentage()
-    {
-        return Product::getPercentage($this->id);
-    }
 }

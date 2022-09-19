@@ -66,4 +66,36 @@ class ProductControllerTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function getDiscountReturnsTheProductDiscountForInsuranceCategories(): void
+    {
+        $price = 1000.00;
+        $product = Product::factory()->create([
+            'category' => 'insurance',
+            'price' => $price
+        ]);
+        $discount = Product::getDiscount($product->id);
+
+        $this->assertEquals($discount, $price - (30 / 100) * $price);
+    }
+
+    /**
+     * @test
+     */
+    public function getDiscountReturnsTheProductDiscountForSKU000003(): void
+    {
+        $price = 1000.00;
+        $product = Product::factory()->create([
+            'sku' => '000003',
+            'price' => $price
+        ]);
+        $discount = Product::getDiscount($product->id);
+
+        $this->assertEquals($discount, $price - (15 / 100) * $price);
+    }
+
+
 }
