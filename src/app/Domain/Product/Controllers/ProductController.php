@@ -11,7 +11,6 @@ class ProductController extends Controller
 {
     public function index($category = null)
     {
-
         if($category == 'insurance'){
             return $this->successResponse(
                 ProductResource::collection(Product::where('category', $category)->get())
@@ -20,20 +19,6 @@ class ProductController extends Controller
 
         return $this->successResponse(
             ProductResource::collection(Product::all())
-        );
-    }
-    public function show(Product $product)
-    {
-        if($product->category == 'insurance' || $product->sku == "000003"){
-            $result = Product::getDiscount($product);
-
-            return $this->successResponse(
-                new ProductResource($result->push($product))
-            );
-        }
-
-        return $this->successResponse(
-            new ProductResource($product)
         );
     }
 }

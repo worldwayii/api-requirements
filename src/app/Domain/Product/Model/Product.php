@@ -3,10 +3,7 @@
 namespace App\Domain\Product\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\JsonResponse;
-use stdClass;
 
 class Product extends Model
 {
@@ -19,7 +16,7 @@ class Product extends Model
         'category',
     ];
 
-    public static function getDiscount($id)
+    public static function getDiscount($id): float|int
     {
         $product = Self::find($id);
         $result = 0;
@@ -34,15 +31,15 @@ class Product extends Model
         return $result;
     }
 
-    public static function getPercentage($id): string
+    public static function getPercentage($id): string|null
     {
         $product = Self::find($id);
-        $percentage = '';
+        $percentage = null;
 
-        if($product->category =='insurance'){
+        if($product->category === 'insurance'){
             $percentage = '30%';
         }
-        if($product->sku == '000003'){
+        if($product->sku === '000003'){
             $percentage = '15%';
         }
 
