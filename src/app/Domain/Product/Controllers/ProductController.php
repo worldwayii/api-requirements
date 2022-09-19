@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         if($request->input('category') == "insurance" ){
             return $this->successResponse(

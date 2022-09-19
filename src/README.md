@@ -100,4 +100,5 @@ The following dataset is the only dataset you need to be able to serve on the AP
 4. Migrate the database with "docker compose run --rm php php artisan migrate"
 5. Run the product table seeder "docker compose run --rm php php artisan db:seed --class=ProductSeeder"
 6. Go to post man or your favorite REST clients and visit "http://localhost:90/api/products"
-7. The test suite can be ran with " docker compose run --rm php vendor/bin/phpunit --testdox"
+7. Go to "http://localhost:90/api/products?category=insurance" to see insurance category only
+8. The test suite can be ran with " docker compose run --rm php vendor/bin/phpunit --testdox"
